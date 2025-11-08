@@ -100,6 +100,14 @@ in {
     xdg.configFile = {
       "mango/config.conf" = lib.mkIf (cfg.settings != "") {
         text = cfg.settings;
+        onChange = ''
+          (
+            XDG_CURRENT_DESKTOP=''${XDG_CURRENT_DESKTOP}
+            if [[ $XDG_CURRENT_DESKTOP == "mango" ]]; then
+              ${cfg.package}/bin/mmsg -d config_reload
+            fi
+          )
+        '';
       };
       "mango/autostart.sh" = lib.mkIf (cfg.autostart_sh != "") {
         source = autostart_sh;
