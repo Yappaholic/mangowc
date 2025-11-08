@@ -102,10 +102,7 @@ in {
         text = cfg.settings;
         onChange = ''
           (
-            XDG_CURRENT_DESKTOP=''${XDG_CURRENT_DESKTOP}
-            if [[ $XDG_CURRENT_DESKTOP == "mango" ]]; then
-              ${cfg.package}/bin/mmsg -d config_reload
-            fi
+              ${cfg.package}/bin/mmsg -d config_reload 2> /dev/null
           )
         '';
       };
