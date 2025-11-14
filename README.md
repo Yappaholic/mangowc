@@ -92,6 +92,12 @@ emerge --sync guru
 
 Then, add `gui-libs/scenefx` and `gui-wm/mangowc` to the `package.accept_keywords`.
 
+```bash
+# In package.accept_keywords/mangowc
+gui-libs/scenefx **
+gui-wm/mangowc **
+```
+
 Finally, install the package:
 
 ```bash
